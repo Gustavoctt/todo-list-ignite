@@ -1,22 +1,36 @@
-import { Header } from './components/Header/Header';
-import { BsClipboardX } from 'react-icons/bs';
-import { HiOutlineTrash } from 'react-icons/hi';
-
-import styles from './App.module.css';
-import './global.css';
 import { useState } from 'react';
 import { AddNewTask } from './components/InputAddNewTask/AddNewTask';
 import { Task } from './components/Task/Task';
+import { Header } from './components/Header/Header';
+import { BsClipboardX } from 'react-icons/bs';
+import styles from './App.module.css';
+import './global.css';
 
+interface Todo {
+  id: number;
+  descricao: string;
+  situacao: boolean
+}
 
 export function App() {
-  const [tasks, setTasks] = useState(["", ""])
+  const [tasks, setTasks] = useState<Todo[]>([])
+
+  function handleAddTodo(todo: string){
+    const newTodo: Todo = {
+      id: 1,
+      descricao: todo,
+      situacao: false
+    }
+
+    setTasks((oldTodo) => [...oldTodo, newTodo])
+  }
+
   return (
    <>
     <Header />
 
     <main className={styles.container}>
-      <AddNewTask />
+      <AddNewTask handleAddTodo={handleAddTodo} />
 
       <section>
         <div className={styles.taskInfo}>
@@ -38,7 +52,7 @@ export function App() {
             <p>Crie tarefas e organize seus itens a fazer</p>
           </div>
         ) : (
-          <Task />
+          <Task tasks={tasks}/>
         ) 
        }
 
