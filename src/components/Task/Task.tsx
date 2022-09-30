@@ -21,11 +21,13 @@ export function Task({ tasks }: TaskProps){
             key={task.descricao}
             className={styles.taskItem}  
           >
-            <div className={styles.inputCheckbox}>
-              <input type="checkbox"  id='checkbox' defaultChecked={task.situacao}/>
+            <div className={styles.taskLeft}>
+              <div className={styles.inputCheckbox}>
+                <input type="checkbox"  id='checkbox' defaultChecked={task.situacao}/>
+              </div>
+              
+              <p>{task.descricao}</p>
             </div>
-            
-            <p>{task.descricao}</p>
             <div className={styles.trashIcon}>
               <HiOutlineTrash size={14} />
             </div>

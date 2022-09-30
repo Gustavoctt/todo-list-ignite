@@ -5,7 +5,7 @@
 
 .taskItem{
   display: flex;
-  justify-content: flex-start;
+  justify-content: space-between;
   align-items: flex-start;
 
   color: var(--gray-100);
@@ -17,6 +17,11 @@
 
 .taskItem + .taskItem{
   margin-top: 0.75rem;
+}
+
+.taskLeft{
+  display: flex;
+  gap: 0.75rem;
 }
 
 .trashIcon{
