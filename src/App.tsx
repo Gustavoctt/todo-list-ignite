@@ -17,13 +17,32 @@ export function App() {
 
   function handleAddTodo(todo: string){
     const newTodo: Todo = {
-      id: 1,
+      id: tasks.length + 1,
       descricao: todo,
       situacao: false
     }
 
     setTasks((oldTodo) => [...oldTodo, newTodo])
   }
+
+  function handleCheckTodo(id: number){
+    const checkedTodo = tasks.filter((task) => {
+      if(task.id === id){
+        task.situacao = !task.situacao
+      }
+      return task;
+    })
+    setTasks(checkedTodo)
+  }
+
+  function handleDeleteTask(id: number){
+    const deleteTask = tasks.filter((task) => {
+      return task.id !== id
+    })
+
+    setTasks(deleteTask)
+  }
+
 
   return (
    <>
@@ -36,7 +55,7 @@ export function App() {
         <div className={styles.taskInfo}>
           <div className={styles.createdTasks}>
             <strong>Tarefas criadas</strong>
-            <span>5</span>
+            <span>{tasks.length}</span>
           </div>
           <div className={styles.completedTasks}>
             <strong>Concluidas</strong>
@@ -52,7 +71,11 @@ export function App() {
             <p>Crie tarefas e organize seus itens a fazer</p>
           </div>
         ) : (
-          <Task tasks={tasks}/>
+          <Task 
+            tasks={tasks}
+            handleCheckTodo={handleCheckTodo}
+            handleDeleteTask={handleDeleteTask}
+          />
         ) 
        }
 

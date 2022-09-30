@@ -8,29 +8,38 @@ interface Todo{
 }
 
 interface TaskProps{
-  tasks: Todo[]
+  tasks: Todo[],
+  handleCheckTodo: (id: number) => void;
+  handleDeleteTask: (id: number) => void;
 }
 
-export function Task({ tasks }: TaskProps){
+export function Task({ tasks, handleCheckTodo, handleDeleteTask }: TaskProps){
   
   return(
     <div className={styles.tasksFull}>
       {tasks.map(task => {
         return(
           <div 
-            key={task.descricao}
+            key={task.id}
             className={styles.taskItem}  
           >
             <div className={styles.taskLeft}>
               <div className={styles.inputCheckbox}>
-                <input type="checkbox"  id='checkbox' defaultChecked={task.situacao}/>
+                <input 
+                  type="checkbox"  
+                  id='checkbox' 
+                  onClick={() => handleCheckTodo(task.id)}
+                />
               </div>
               
-              <p>{task.descricao}</p>
+              <p className={task.situacao ? styles.descriptonSelected : ''}>{task.descricao}</p>
             </div>
-            <div className={styles.trashIcon}>
+            <button 
+              className={styles.trashIcon}
+              onClick={() => handleDeleteTask(task.id)}
+            >
               <HiOutlineTrash size={14} />
-            </div>
+            </button>
           </div> 
         )
       })}

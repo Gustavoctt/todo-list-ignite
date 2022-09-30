@@ -24,9 +24,17 @@
   gap: 0.75rem;
 }
 
+.descriptonSelected{
+  color: var(--gray-300);
+  text-decoration: line-through;
+}
+
 .trashIcon{
   display: flex;
   padding: 5px;
+  background: transparent;
+  border: 0;
+  color: var(--gray-300);
   transition: color 0.2s ;
 }
 
