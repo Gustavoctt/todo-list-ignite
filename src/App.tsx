@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { AddNewTask } from './components/InputAddNewTask/AddNewTask';
 import { Task } from './components/Task/Task';
 import { Header } from './components/Header/Header';
@@ -14,6 +14,13 @@ interface Todo {
 
 export function App() {
   const [tasks, setTasks] = useState<Todo[]>([])
+  const [tasksFinished, setTasksFinished] = useState(0);
+
+  useEffect(() => {
+    let countFinished = 0;
+    tasks.forEach((task) => ( task.situacao === true ? (countFinished += 1) : 0 ))
+    setTasksFinished(countFinished)
+  }, [tasks])
 
   function handleAddTodo(todo: string){
     const newTodo: Todo = {
@@ -42,8 +49,6 @@ export function App() {
 
     setTasks(deleteTask)
   }
-
-
   return (
    <>
     <Header />
@@ -59,7 +64,7 @@ export function App() {
           </div>
           <div className={styles.completedTasks}>
             <strong>Concluidas</strong>
-            <span>2 de 5</span>
+            <span>{tasksFinished} de {tasks.length}</span>
           </div>
         </div>
 
