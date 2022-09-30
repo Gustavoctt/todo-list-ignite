@@ -21,8 +21,15 @@
   align-items: center;
   justify-content: center;
   font-weight: bold;
+  cursor: pointer;
+
+  transition: background-color 0.2s;
 }
 
 .buttonCreate > svg {
   margin-left: 0.5rem;
+}
+
+.buttonCreate:hover{
+  background: var(--blue);
 }

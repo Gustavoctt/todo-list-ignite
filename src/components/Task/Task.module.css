@@ -19,12 +19,17 @@
   margin-top: 0.75rem;
 }
 
-.taskItem > svg{
+.trashIcon{
+  display: flex;
+  padding: 5px;
   transition: color 0.2s ;
 }
 
-.taskItem > svg:hover {
+.trashIcon:hover {
   color: var(--danger);
+  cursor: pointer;
+  background-color: var(--gray-400);
+  border-radius: 8px;
 }
 
 .inputCheckbox > input{

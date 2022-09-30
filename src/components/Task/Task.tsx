@@ -10,7 +10,9 @@ export function Task(){
         </div>
         
         <p>Integer urna interdum massa libero auctor neque turpis turpis semper. Duis vel sed fames integer.</p>
-        <HiOutlineTrash size={24} />
+        <div className={styles.trashIcon}>
+          <HiOutlineTrash size={14} />
+        </div>
       </div> 
 
       <div className={styles.taskItem}>
@@ -18,7 +20,9 @@ export function Task(){
           <input type="checkbox"  id='checkbox'/>
         </div>
         <p>Integer urna interdum massa libero auctor neque turpis turpis semper. Duis vel sed fames integer.</p>
-        <HiOutlineTrash size={24}/>
+        <div className={styles.trashIcon}>
+          <HiOutlineTrash size={14} />
+        </div>
       </div> 
     </div>
   )
